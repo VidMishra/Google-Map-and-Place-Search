@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GoogleMapPlaceSearchDemo</string>
+
+    <string name="google_map_api_key">AIzaSyBbfaPIY3nirI9POrjRPiFQJ6uGgqEpM-A</string>
+
+    <string name="str_no_address_found">No Address Found!</string>
+    <string name="str_no_location_data_provided">No Location Data Provided!</string>
+    <string name="str_service_not_available">Service Not Available!</string>
+    <string name="str_invalid_lat_long_used">Invalid Lat-Long Being Used!</string>
+</resources>
