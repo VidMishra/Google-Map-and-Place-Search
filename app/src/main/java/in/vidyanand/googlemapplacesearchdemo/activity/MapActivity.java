@@ -240,7 +240,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     Location mLocation = new Location("");
                     mLocation.setLatitude(mLatLong.latitude);
                     mLocation.setLongitude(mLatLong.longitude);
-                    callReverseGeoService(mLocation, "onMapReady");
+                    callReverseGeoService(mLocation);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -371,7 +371,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
             mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-            callReverseGeoService(location, "loadMap");
+            callReverseGeoService(location);
         } else {
             Toast.makeText(getApplicationContext(), "UNABLE TO LOAD MAP!", Toast.LENGTH_SHORT).show();
         }
@@ -408,6 +408,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             Log.i(TAG, "onReceiveResult: " + resultCode);
 
+            txtBanner.setVisibility(View.VISIBLE);
+
             if (resultCode == Constants.SUCCESS_RESULT_KEY && resultData != null) {
 
                 String address = resultData.getString(Constants.SEARCH_RESULT_DATA_KEY);
@@ -428,9 +430,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
-    private void callReverseGeoService(Location mLocation, String callFrom) {
+    private void callReverseGeoService(Location mLocation) {
 
-        Log.e(TAG, "callReverseGeoService: " + callFrom);
+        txtBanner.setVisibility(View.GONE);
 
         Intent intent = new Intent(this, ReverseGeoIntentService.class);
         intent.putExtra(Constants.REGISTER_RECEIVER_KEY, mResultReceiver);
